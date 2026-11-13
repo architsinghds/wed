@@ -1,0 +1,673 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Forever ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #3d111b;
+    color: #f9e8c5;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Background decoration */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle at top, #852e3c 0%, transparent 55%),
+      linear-gradient(135deg, #351019, #651d2b, #290d15);
+    z-index: -2;
+}
+
+body::after {
+    content: "❀";
+    position: fixed;
+    font-size: 350px;
+    color: rgba(255, 215, 130, 0.035);
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Password screen */
+
+#lockScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: linear-gradient(145deg, #380f19, #751f31, #360f1a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.lock-box {
+    width: 100%;
+    max-width: 430px;
+    padding: 45px 25px;
+    border: 1px solid #d9b56e;
+    outline: 1px solid rgba(217,181,110,0.4);
+    outline-offset: 7px;
+    background: rgba(35, 7, 15, 0.5);
+    border-radius: 8px;
+}
+
+.lock-box .symbol {
+    font-size: 55px;
+    color: #f3d18d;
+    margin-bottom: 15px;
+}
+
+.lock-box h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 48px;
+    color: #f4d18c;
+    font-weight: normal;
+}
+
+.lock-box p {
+    margin: 15px 0 25px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #f5dcb4;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #d6ae6a;
+    border-radius: 4px;
+    background: #fff4df;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+}
+
+.gold-btn {
+    margin-top: 20px;
+    padding: 13px 30px;
+    border: none;
+    background: linear-gradient(90deg, #b17b35, #f2d28b, #b17b35);
+    color: #481522;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 2px;
+    border-radius: 3px;
+}
+
+#error {
+    color: #ffb4b4;
+    font-size: 13px;
+    margin-top: 15px;
+}
+
+/* Main website */
+
+#mainContent {
+    display: none;
+    text-align: center;
+    padding-bottom: 70px;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    position: relative;
+}
+
+.top-label {
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: #eacb8d;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(55px, 10vw, 100px);
+    color: #f8d99b;
+    font-weight: normal;
+    text-shadow: 0 0 20px rgba(255,200,100,0.2);
+}
+
+.hero h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 4vw, 32px);
+    font-weight: normal;
+    letter-spacing: 5px;
+    margin-top: 10px;
+}
+
+.hero .subtitle {
+    margin-top: 25px;
+    color: #e8c9a0;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.divider {
+    color: #eacb8d;
+    font-size: 25px;
+    margin: 30px 0;
+}
+
+/* Floating words */
+
+.floating-word {
+    position: fixed;
+    bottom: -50px;
+    color: #f4d18c;
+    font-family: 'Great Vibes', cursive;
+    font-size: 25px;
+    pointer-events: none;
+    animation: floatUp 12s linear forwards;
+    z-index: 0;
+    opacity: 0.65;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    20% { opacity: 0.7; }
+    80% { opacity: 0.5; }
+    100% {
+        transform: translateY(-110vh) rotate(15deg);
+        opacity: 0;
+    }
+}
+
+/* Promises section */
+
+.promises {
+    padding: 70px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.section-heading {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(48px, 8vw, 75px);
+    color: #f3d18e;
+}
+
+.section-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    letter-spacing: 3px;
+    margin-top: 12px;
+    color: #f1d9b6;
+}
+
+.letter-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 55px;
+}
+
+.letter {
+    background: linear-gradient(145deg, #f7e5c4, #e9c99a);
+    color: #531a27;
+    padding: 35px 22px;
+    border: 5px double #a4773c;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.4s;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.letter:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.letter .icon {
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+.letter h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 29px;
+    margin-bottom: 12px;
+}
+
+.letter p {
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* Letter popup */
+
+#letterModal {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 3, 9, 0.92);
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.letter-paper {
+    background: #f8e9cb;
+    color: #51202b;
+    border: 6px double #b38b50;
+    max-width: 650px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 35px 25px;
+    text-align: left;
+    position: relative;
+}
+
+.letter-paper h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 45px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.letter-content {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+}
+
+.close-btn {
+    position: sticky;
+    top: 0;
+    float: right;
+    background: #721e30;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+/* Proposal ending */
+
+.proposal {
+    margin: 50px 20px;
+    padding: 65px 20px;
+    border-top: 1px solid #c6a264;
+    border-bottom: 1px solid #c6a264;
+}
+
+.proposal h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(48px, 8vw, 75px);
+    color: #f3d18e;
+}
+
+.proposal p {
+    margin-top: 25px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 23px;
+    line-height: 1.7;
+}
+
+footer {
+    padding: 30px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 30px;
+    color: #f2d18e;
+}
+
+@media(max-width: 650px) {
+    .letter-container {
+        grid-template-columns: 1fr;
+    }
+
+    .letter {
+        min-height: 220px;
+    }
+
+    .hero h2 {
+        letter-spacing: 2px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD SCREEN -->
+
+<div id="lockScreen">
+    <div class="lock-box">
+        <div class="symbol">❦</div>
+        <h1>Few Little Promises</h1>
+        <p>ONLY FOR THE ONE I LOVE</p>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter our secret password"
+        >
+
+        <button class="gold-btn" onclick="unlock()">
+            UNLOCK MY HEART ♡
+        </button>
+
+        <div id="error"></div>
+    </div>
+</div>
+
+
+<!-- MAIN WEBSITE -->
+
+<div id="mainContent">
+
+    <section class="hero">
+
+        <div class="top-label">
+            एक नई शुरुआत • A NEW BEGINNING
+        </div>
+
+        <h1>Our Forever</h1>
+
+        <h2>A PROMISE OF LOVE</h2>
+
+        <div class="divider">❀ ❦ ❀</div>
+
+        <p class="subtitle">
+            Some stories are written by destiny.<br>
+            Ours is the one I want to write with you.
+        </p>
+
+        <div class="divider">✦ ✦ ✦</div>
+
+        <p style="font-family:'Great Vibes';font-size:30px;">
+            To my favourite person ❤️
+        </p>
+
+    </section>
+
+
+    <!-- OUR PROMISES -->
+
+    <section class="promises">
+
+        <h1 class="section-heading">Our Promises</h1>
+
+        <p class="section-subtitle">
+            TWO LETTERS • ONE FOREVER
+        </p>
+
+        <div class="divider">❀ ❦ ❀</div>
+
+        <div class="letter-container">
+
+            <div class="letter" onclick="openLetter(1)">
+                <div class="icon">💌</div>
+                <h3>My Promises to You</h3>
+                <p>OPEN THE FIRST LETTER</p>
+                <p style="margin-top:20px;">❦</p>
+            </div>
+
+            <div class="letter" onclick="openLetter(2)">
+                <div class="icon">💍</div>
+                <h3>Our Promises Together</h3>
+                <p>OPEN THE SECOND LETTER</p>
+                <p style="margin-top:20px;">❦</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LETTER POPUP -->
+
+    <div id="letterModal">
+
+        <div class="letter-paper">
+
+            <button class="close-btn" onclick="closeLetter()">
+                CLOSE ✕
+            </button>
+
+            <h2 id="letterTitle"></h2>
+
+            <div class="letter-content" id="letterContent">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FINAL PROPOSAL -->
+
+    <section class="proposal">
+
+        <div class="divider">❀</div>
+
+        <h2>Will You Be Mine Forever?</h2>
+
+        <p>
+            I don't promise that every day will be perfect.<br>
+            But I promise to keep choosing you,<br>
+            to keep loving you,<br>
+            and to keep building a beautiful life with you.
+        </p>
+
+        <div class="divider">💍</div>
+
+        <p style="font-family:'Great Vibes';font-size:38px;">
+            Here's to us, and to forever. ❤️
+        </p>
+
+    </section>
+
+
+    <footer>
+        Made with all my love ♡
+    </footer>
+
+</div>
+
+
+<script>
+
+// ======================================
+// PASSWORD PROTECTION
+// ======================================
+
+const PASSWORD = "Bangaram1111";
+
+function unlock() {
+
+    const entered =
+        document.getElementById("password").value;
+
+    if (entered === PASSWORD) {
+
+        document.getElementById("lockScreen").style.display = "none";
+
+        document.getElementById("mainContent").style.display = "block";
+
+        startFloatingWords();
+
+    } else {
+
+        document.getElementById("error").innerText =
+            "Wrong password! Try again, my love ❤️";
+
+    }
+}
+
+
+// Enter key support
+
+document.getElementById("password").addEventListener(
+    "keydown",
+    function(event) {
+        if (event.key === "Enter") {
+            unlock();
+        }
+    }
+);
+
+
+// ======================================
+// FLOATING ROMANTIC WORDS
+// ======================================
+
+const words = [
+    "Forever ❤️",
+    "My Love",
+    "My Bangaram",
+    "My Priyatama",
+    "I Choose You",
+    "My Nannaaa",
+    "Your Deewana",
+    "My Meghana",
+    "Your Archit",
+    "Endless Love",
+    "My Prapancham",
+    "Your MAD",
+    "My Babbyy",
+    "Only Yours"
+];
+
+function startFloatingWords() {
+
+    setInterval(() => {
+
+        const word = document.createElement("div");
+
+        word.className = "floating-word";
+
+        word.innerText =
+            words[Math.floor(Math.random() * words.length)];
+
+        word.style.left =
+            Math.random() * 90 + "%";
+
+        word.style.fontSize =
+            (18 + Math.random() * 18) + "px";
+
+        document.body.appendChild(word);
+
+        setTimeout(() => {
+            word.remove();
+        }, 12000);
+
+    }, 1200);
+}
+
+
+// ======================================
+// TWO PROMISE LETTERS
+// ======================================
+
+// Replace these sample messages with your
+// actual letters whenever you are ready.
+
+const letters = {
+
+    1: {
+        title: "My Promises to You ❤️",
+
+        content: `My Dearest Love,
+
+[WRITE YOUR FIRST LETTER HERE]
+
+[Add all the promises you want to make to her.]
+
+Forever yours,
+Your Love ❤️`
+    },
+
+    2: {
+        title: "Our Promises Together 💍",
+
+        content: `My Favourite Person,
+
+[WRITE YOUR SECOND LETTER HERE]
+
+[Write about the life, dreams and future you
+want to build together.]
+
+With all my love,
+Forever and Always ❤️`
+    }
+
+};
+
+
+function openLetter(number) {
+
+    document.getElementById("letterTitle").innerText =
+        letters[number].title;
+
+    document.getElementById("letterContent").innerText =
+        letters[number].content;
+
+    document.getElementById("letterModal").style.display =
+        "flex";
+
+}
+
+
+function closeLetter() {
+
+    document.getElementById("letterModal").style.display =
+        "none";
+
+}
+
+
+// Close popup by clicking outside the letter
+
+document.getElementById("letterModal").addEventListener(
+    "click",
+    function(event) {
+
+        if (event.target === this) {
+            closeLetter();
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
